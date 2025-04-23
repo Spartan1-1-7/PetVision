@@ -45,7 +45,7 @@ PetVision leverages a deep learning CNN model to automatically classify input im
 
 ## Dataset
 
-- **Source:** [Kaggle Dogs and Cats Dataset](hhttps://www.kaggle.com/datasets/tongpython/cat-and-dog)
+- **Source:** [Kaggle Dogs and Cats Dataset](https://www.kaggle.com/datasets/tongpython/cat-and-dog)
 - **Structure:**
 ```
 data/
