@@ -8,7 +8,8 @@ from interface_assets.responsive_styles import (
     close_upload_container,
     create_responsive_columns,
     display_files_responsive,
-    create_responsive_button
+    create_responsive_button,
+    display_responsive_image
 )
 
 # Apply responsive configuration
@@ -44,10 +45,8 @@ if uploaded_files:
         with st.spinner("Processing files..."):
             result = predict_img(uploaded_files)
             
-            # Display image with consistent sizing
-            col1, col2, col3 = st.columns([1, 2, 1])
-            with col2:
-                st.image(uploaded_files, caption="Uploaded Image", width=400)
+            # Display image with responsive sizing
+            display_responsive_image(uploaded_files, "Uploaded Image")
             
             st.markdown(
                 f"<div style='text-align: center; background-color: #d4edda; border: 1px solid #c3e6cb; border-radius: 0.375rem; padding: 0.75rem; margin: 1rem 0; color: #155724;'>"

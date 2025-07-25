@@ -35,6 +35,21 @@ def load_responsive_css():
         border-color: #1f77b4;
     }
     
+    /* Responsive image styling */
+    .responsive-image-container img {
+        max-width: 400px;
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin: 1rem auto;
+        display: block;
+    }
+    
+    .responsive-image-container {
+        text-align: center;
+    }
+    
     /* Mobile responsiveness */
     @media (max-width: 768px) {
         .main {
@@ -49,6 +64,11 @@ def load_responsive_css():
         .stTitle {
             font-size: 1.5rem;
             margin-bottom: 1rem;
+        }
+        
+        .responsive-image-container img {
+            max-width: 300px;
+            width: 90%;
         }
     }
     
@@ -120,3 +140,18 @@ def create_responsive_button(button_text, callback=None):
                 return callback()
             return True
     return False
+
+def display_responsive_image(uploaded_file, caption="Uploaded Image"):
+    """Display an image with responsive sizing"""
+    # Create a responsive container for the image
+    st.markdown(
+        '<div class="responsive-image-container" style="text-align: center; margin: 1rem 0;">',
+        unsafe_allow_html=True
+    )
+    
+    # Use columns for centering and responsive layout
+    col1, col2, col3 = st.columns([0.5, 3, 0.5])
+    with col2:
+        st.image(uploaded_file, caption=caption, use_column_width=True)
+    
+    st.markdown('</div>', unsafe_allow_html=True)
