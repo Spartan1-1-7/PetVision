@@ -3,7 +3,7 @@ import streamlit as st
 def apply_responsive_config():
     """Configure page layout for responsiveness"""
     st.set_page_config(
-        page_title="Cat or Dog Classifier",
+        page_title="PetVision",
         page_icon="✌️",
         layout="wide"
     )
@@ -103,6 +103,18 @@ def create_responsive_header(title):
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
         st.markdown(f'<h1 class="stTitle">{title}</h1>', unsafe_allow_html=True)
+
+def create_project_description(description_text):
+    """Create a responsive project description section"""
+    col1, col2, col3 = st.columns([1, 3, 1])
+    with col2:
+        st.markdown(
+            f'<div style="text-align: center; margin: 1rem 0 2rem 0; padding: 1rem; background-color: rgba(0, 0, 0, 0.2); border-radius: 10px; border-left: 4px solid #007bff;">'
+            # f'<p style="margin: 0; color: #495057; font-size: 1.1rem; line-height: 1.6;">{description_text}</p>'
+            f'<p style="margin: 0; font-size: 1.1rem; line-height: 1.6;">{description_text}</p>'
+            f'</div>',
+            unsafe_allow_html=True
+        )
 
 def create_upload_container():
     """Create responsive upload container"""

@@ -11,6 +11,7 @@ from interface_assets.responsive_styles import (
     apply_responsive_config, 
     load_responsive_css, 
     create_responsive_header,
+    create_project_description,
     create_upload_container,
     close_upload_container,
     create_responsive_columns,
@@ -26,7 +27,12 @@ apply_responsive_config()
 load_responsive_css()
 
 # Create responsive header
-create_responsive_header("Cat or Dog Classifier")
+create_responsive_header("🐾 Welcome to PetVision!")
+
+# Add project description
+create_project_description(
+    "Upload an image of your pet, and let our AI model instantly predict whether it’s a cat or a dog. Powered by deep learning and designed for pet lovers!"
+)
 
 # Main upload section with responsive container
 # create_upload_container()
