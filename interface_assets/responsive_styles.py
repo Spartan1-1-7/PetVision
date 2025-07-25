@@ -153,4 +153,4 @@ def display_responsive_image(uploaded_file, caption="Uploaded Image"):
     # Use a more mobile-friendly approach with direct width control
     col1, col2, col3 = st.columns([0.2, 2.6, 0.2])
     with col2:
-        st.image(uploaded_file, caption=caption, width=None, use_column_width=True)
+        st.image(uploaded_file, caption=caption, use_container_width=True)

@@ -1,4 +1,11 @@
 import streamlit as st
+import warnings
+import os
+
+# Suppress warnings in production
+warnings.filterwarnings("ignore")
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'  # Suppress TensorFlow warnings
+
 from prediction import predict_img
 from interface_assets.responsive_styles import (
     apply_responsive_config, 
