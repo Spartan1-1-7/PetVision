@@ -43,5 +43,16 @@ if uploaded_files:
     if create_responsive_button("🚀 Process Files"):
         with st.spinner("Processing files..."):
             result = predict_img(uploaded_files)
-            st.success(f"The uploaded image is a {result}!")
+            
+            # Display image with consistent sizing
+            col1, col2, col3 = st.columns([1, 2, 1])
+            with col2:
+                st.image(uploaded_files, caption="Uploaded Image", width=400)
+            
+            st.markdown(
+                f"<div style='text-align: center; background-color: #d4edda; border: 1px solid #c3e6cb; border-radius: 0.375rem; padding: 0.75rem; margin: 1rem 0; color: #155724;'>"
+                f"<strong> The uploaded image is a {result}!</strong>"
+                f"</div>", 
+                unsafe_allow_html=True
+            )
             # st.balloons()

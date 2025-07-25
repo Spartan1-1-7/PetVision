@@ -88,7 +88,7 @@ def close_upload_container():
 def display_files_responsive(uploaded_files):
     """Display uploaded files in a responsive grid"""
     if uploaded_files:
-        st.markdown("### 📁 Uploaded Files")
+        st.markdown("###  Uploaded Files")
         
         # Handle both single file and multiple files
         if hasattr(uploaded_files, '__iter__') and not hasattr(uploaded_files, 'name'):
