@@ -36,14 +36,17 @@ def load_responsive_css():
     }
     
     /* Responsive image styling */
-    .responsive-image-container img {
-        max-width: 400px;
-        width: 100%;
-        height: auto;
+    .stImage > img {
+        max-width: 100% !important;
+        height: auto !important;
         border-radius: 10px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        margin: 1rem auto;
-        display: block;
+    }
+    
+    /* Ensure images never overflow on any device */
+    .stImage {
+        text-align: center;
+        margin: 1rem 0;
     }
     
     .responsive-image-container {
@@ -66,9 +69,13 @@ def load_responsive_css():
             margin-bottom: 1rem;
         }
         
-        .responsive-image-container img {
-            max-width: 300px;
-            width: 90%;
+        .stImage > img {
+            max-width: 95% !important;
+            width: auto !important;
+        }
+        
+        .stImage {
+            margin: 0.5rem 0;
         }
     }
     
@@ -143,15 +150,7 @@ def create_responsive_button(button_text, callback=None):
 
 def display_responsive_image(uploaded_file, caption="Uploaded Image"):
     """Display an image with responsive sizing"""
-    # Create a responsive container for the image
-    st.markdown(
-        '<div class="responsive-image-container" style="text-align: center; margin: 1rem 0;">',
-        unsafe_allow_html=True
-    )
-    
-    # Use columns for centering and responsive layout
-    col1, col2, col3 = st.columns([0.5, 3, 0.5])
+    # Use a more mobile-friendly approach with direct width control
+    col1, col2, col3 = st.columns([0.2, 2.6, 0.2])
     with col2:
-        st.image(uploaded_file, caption=caption, use_column_width=True)
-    
-    st.markdown('</div>', unsafe_allow_html=True)
+        st.image(uploaded_file, caption=caption, width=None, use_column_width=True)
