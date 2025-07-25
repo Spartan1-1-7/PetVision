@@ -90,17 +90,26 @@ def display_files_responsive(uploaded_files):
     if uploaded_files:
         st.markdown("### 📁 Uploaded Files")
         
-        # Create responsive grid for file display
-        files_per_row = 2 if len(uploaded_files) > 4 else 1
-        
-        for i in range(0, len(uploaded_files), files_per_row):
-            cols = st.columns(files_per_row)
+        # Handle both single file and multiple files
+        if hasattr(uploaded_files, '__iter__') and not hasattr(uploaded_files, 'name'):
+            # Multiple files (list-like)
+            files_list = uploaded_files
+            files_per_row = 2 if len(files_list) > 4 else 1
             
-            for j, col in enumerate(cols):
-                if i + j < len(uploaded_files):
-                    file = uploaded_files[i + j]
-                    with col:
-                        st.info(f"📄 **{file.name}**\n\nSize: {file.size / 1024:.1f} KB")
+            for i in range(0, len(files_list), files_per_row):
+                cols = st.columns(files_per_row)
+                
+                for j, col in enumerate(cols):
+                    if i + j < len(files_list):
+                        file = files_list[i + j]
+                        with col:
+                            st.info(f"📄 **{file.name}**\n\nSize: {file.size / 1024:.1f} KB")
+        else:
+            # Single file
+            file = uploaded_files
+            col1, col2, col3 = st.columns([1, 2, 1])
+            with col2:
+                st.info(f"📄 **{file.name}**\n\nSize: {file.size / 1024:.1f} KB")
 
 def create_responsive_button(button_text, callback=None):
     """Create a responsive centered button"""
